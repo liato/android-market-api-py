@@ -153,7 +153,6 @@ class MarketSession(object):
         request = market_proto.Request()
         request.requestgroup.add(appsRequest = appsreq)
         response = self.execute(request)
-        print response
         retlist = []
         for rg in response.responsegroup:
             if rg.HasField("appsResponse"):
