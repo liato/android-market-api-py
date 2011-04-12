@@ -40,7 +40,7 @@ class MarketSession(object):
         self.context.androidId = "0123456789123456"
         self.context.userLanguage = "en"
         self.context.userCountry = "US"
-        self.context.deviceAndSdkVersion = "crespo:8"
+        self.context.deviceAndSdkVersion = "crespo:10"
         self.setOperatorTMobile()
 
     def _toDict(self, protoObj):
@@ -114,7 +114,7 @@ class MarketSession(object):
                 data = e.fp.read().split()
                 params = {}
                 for d in data:
-                    k, v = d.split("=")
+                    k, v = d.split("=", 1)
                     params[k.strip().lower()] = v.strip()
                 if "error" in params:
                     raise LoginError(params["error"])
@@ -153,6 +153,7 @@ class MarketSession(object):
         request = market_proto.Request()
         request.requestgroup.add(appsRequest = appsreq)
         response = self.execute(request)
+        print response
         retlist = []
         for rg in response.responsegroup:
             if rg.HasField("appsResponse"):

@@ -10,6 +10,10 @@ if __name__ == "__main__":
     
     # Search for "bankdroid" on the market and print the first result
     results = session.searchApp("bankdroid")
+    if len(results) == 0:
+        print "No results found"
+        exit()
+    
     app = results[0]
     pprint(app)
     
