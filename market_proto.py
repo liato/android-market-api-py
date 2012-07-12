@@ -6,8 +6,6 @@ from google.protobuf import reflection
 from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
-
-
 DESCRIPTOR = descriptor.FileDescriptor(
   name='market.proto',
   package='',
