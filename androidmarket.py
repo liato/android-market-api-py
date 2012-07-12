@@ -94,7 +94,6 @@ class MarketSession(object):
         self.context.authSubToken = authSubToken
         self.authSubToken = authSubToken
 
-
     def login(self, email, password, accountType = ACCOUNT_TYPE_HOSTED_OR_GOOGLE):
         params = {"Email": email, "Passwd": password, "service": self.SERVICE,
                   "accountType": accountType}
@@ -210,7 +209,7 @@ class MarketSession(object):
             if rg.HasField("subCategoriesResponse"):
                 for cat in rg.subCategoriesResponse.category:
                     retlist.append(self._toDict(cat))
-        return retlist    
+        return retlist
 
 if __name__ == "__main__":
     print "No command line interface available, yet."

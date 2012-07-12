@@ -53,7 +53,6 @@ RINGTONE = 2
 WALLPAPER = 3
 GAME = 4
 
-
 _APPSREQUEST_ORDERTYPE = descriptor.EnumDescriptor(
   name='OrderType',
   full_name='AppsRequest.OrderType',
@@ -141,7 +140,6 @@ _GETIMAGEREQUEST_APPIMAGEUSAGE = descriptor.EnumDescriptor(
   serialized_end=2134,
 )
 
-
 _APPSREQUEST = descriptor.Descriptor(
   name='AppsRequest',
   full_name='AppsRequest',
@@ -227,7 +225,6 @@ _APPSREQUEST = descriptor.Descriptor(
   serialized_end=373,
 )
 
-
 _APPSRESPONSE = descriptor.Descriptor(
   name='AppsResponse',
   full_name='AppsResponse',
@@ -261,7 +258,6 @@ _APPSRESPONSE = descriptor.Descriptor(
   serialized_start=375,
   serialized_end=430,
 )
-
 
 _CATEGORY = descriptor.Descriptor(
   name='Category',
@@ -318,7 +314,6 @@ _CATEGORY = descriptor.Descriptor(
   serialized_end=546,
 )
 
-
 _COMMENTSREQUEST = descriptor.Descriptor(
   name='CommentsRequest',
   full_name='CommentsRequest',
@@ -360,7 +355,6 @@ _COMMENTSREQUEST = descriptor.Descriptor(
   serialized_end=622,
 )
 
-
 _COMMENTSRESPONSE = descriptor.Descriptor(
   name='CommentsResponse',
   full_name='CommentsResponse',
@@ -394,7 +388,6 @@ _COMMENTSRESPONSE = descriptor.Descriptor(
   serialized_start=624,
   serialized_end=692,
 )
-
 
 _APP_EXTENDEDINFO = descriptor.Descriptor(
   name='ExtendedInfo',
@@ -632,7 +625,6 @@ _APP = descriptor.Descriptor(
   serialized_end=1327,
 )
 
-
 _COMMENT = descriptor.Descriptor(
   name='Comment',
   full_name='Comment',
@@ -688,7 +680,6 @@ _COMMENT = descriptor.Descriptor(
   serialized_end=1428,
 )
 
-
 _CATEGORIESREQUEST = descriptor.Descriptor(
   name='CategoriesRequest',
   full_name='CategoriesRequest',
@@ -708,7 +699,6 @@ _CATEGORIESREQUEST = descriptor.Descriptor(
   serialized_start=1430,
   serialized_end=1449,
 )
-
 
 _CATEGORIESRESPONSE = descriptor.Descriptor(
   name='CategoriesResponse',
@@ -737,7 +727,6 @@ _CATEGORIESRESPONSE = descriptor.Descriptor(
   serialized_end=1502,
 )
 
-
 _SUBCATEGORIESREQUEST = descriptor.Descriptor(
   name='SubCategoriesRequest',
   full_name='SubCategoriesRequest',
@@ -764,7 +753,6 @@ _SUBCATEGORIESREQUEST = descriptor.Descriptor(
   serialized_start=1504,
   serialized_end=1553,
 )
-
 
 _SUBCATEGORIESRESPONSE = descriptor.Descriptor(
   name='SubCategoriesResponse',
@@ -806,7 +794,6 @@ _SUBCATEGORIESRESPONSE = descriptor.Descriptor(
   serialized_start=1555,
   serialized_end=1658,
 )
-
 
 _REQUESTCONTEXT = descriptor.Descriptor(
   name='RequestContext',
@@ -905,7 +892,6 @@ _REQUESTCONTEXT = descriptor.Descriptor(
   serialized_end=1927,
 )
 
-
 _GETIMAGEREQUEST = descriptor.Descriptor(
   name='GetImageRequest',
   full_name='GetImageRequest',
@@ -948,7 +934,6 @@ _GETIMAGEREQUEST = descriptor.Descriptor(
   serialized_end=2134,
 )
 
-
 _GETIMAGERESPONSE = descriptor.Descriptor(
   name='GetImageResponse',
   full_name='GetImageResponse',
@@ -975,7 +960,6 @@ _GETIMAGERESPONSE = descriptor.Descriptor(
   serialized_start=2136,
   serialized_end=2173,
 )
-
 
 _REQUEST_REQUESTGROUP = descriptor.Descriptor(
   name='RequestGroup',
@@ -1066,7 +1050,6 @@ _REQUEST = descriptor.Descriptor(
   serialized_end=2499,
 )
 
-
 _RESPONSECONTEXT = descriptor.Descriptor(
   name='ResponseContext',
   full_name='ResponseContext',
@@ -1114,7 +1097,6 @@ _RESPONSECONTEXT = descriptor.Descriptor(
   serialized_start=2501,
   serialized_end=2588,
 )
-
 
 _RESPONSE_RESPONSEGROUP = descriptor.Descriptor(
   name='ResponseGroup',
@@ -1258,121 +1240,121 @@ DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
 class AppsRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _APPSREQUEST
-  
+
   # @@protoc_insertion_point(class_scope:AppsRequest)
 
 class AppsResponse(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _APPSRESPONSE
-  
+
   # @@protoc_insertion_point(class_scope:AppsResponse)
 
 class Category(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _CATEGORY
-  
+
   # @@protoc_insertion_point(class_scope:Category)
 
 class CommentsRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _COMMENTSREQUEST
-  
+
   # @@protoc_insertion_point(class_scope:CommentsRequest)
 
 class CommentsResponse(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _COMMENTSRESPONSE
-  
+
   # @@protoc_insertion_point(class_scope:CommentsResponse)
 
 class App(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
-  
+
   class ExtendedInfo(message.Message):
     __metaclass__ = reflection.GeneratedProtocolMessageType
     DESCRIPTOR = _APP_EXTENDEDINFO
-    
+
     # @@protoc_insertion_point(class_scope:App.ExtendedInfo)
   DESCRIPTOR = _APP
-  
+
   # @@protoc_insertion_point(class_scope:App)
 
 class Comment(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _COMMENT
-  
+
   # @@protoc_insertion_point(class_scope:Comment)
 
 class CategoriesRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _CATEGORIESREQUEST
-  
+
   # @@protoc_insertion_point(class_scope:CategoriesRequest)
 
 class CategoriesResponse(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _CATEGORIESRESPONSE
-  
+
   # @@protoc_insertion_point(class_scope:CategoriesResponse)
 
 class SubCategoriesRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _SUBCATEGORIESREQUEST
-  
+
   # @@protoc_insertion_point(class_scope:SubCategoriesRequest)
 
 class SubCategoriesResponse(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _SUBCATEGORIESRESPONSE
-  
+
   # @@protoc_insertion_point(class_scope:SubCategoriesResponse)
 
 class RequestContext(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _REQUESTCONTEXT
-  
+
   # @@protoc_insertion_point(class_scope:RequestContext)
 
 class GetImageRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GETIMAGEREQUEST
-  
+
   # @@protoc_insertion_point(class_scope:GetImageRequest)
 
 class GetImageResponse(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GETIMAGERESPONSE
-  
+
   # @@protoc_insertion_point(class_scope:GetImageResponse)
 
 class Request(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
-  
+
   class RequestGroup(message.Message):
     __metaclass__ = reflection.GeneratedProtocolMessageType
     DESCRIPTOR = _REQUEST_REQUESTGROUP
-    
+
     # @@protoc_insertion_point(class_scope:Request.RequestGroup)
   DESCRIPTOR = _REQUEST
-  
+
   # @@protoc_insertion_point(class_scope:Request)
 
 class ResponseContext(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _RESPONSECONTEXT
-  
+
   # @@protoc_insertion_point(class_scope:ResponseContext)
 
 class Response(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
-  
+
   class ResponseGroup(message.Message):
     __metaclass__ = reflection.GeneratedProtocolMessageType
     DESCRIPTOR = _RESPONSE_RESPONSEGROUP
-    
+
     # @@protoc_insertion_point(class_scope:Response.ResponseGroup)
   DESCRIPTOR = _RESPONSE
-  
+
   # @@protoc_insertion_point(class_scope:Response)
 
 # @@protoc_insertion_point(module_scope)
