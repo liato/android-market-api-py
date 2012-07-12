@@ -34,7 +34,7 @@ class MarketSession(object):
 
     def __init__(self):
         self.context = market_proto.RequestContext()
-        self.context.unknown1 = 0
+        self.context.isSecure = 0
         self.context.version = 1002012
         self.context.androidId = "0123456789123456"
         self.context.userLanguage = "en"
