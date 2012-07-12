@@ -32,7 +32,6 @@ class MarketSession(object):
     authSubToken = None
     context = None
 
-
     def __init__(self):
         self.context = market_proto.RequestContext()
         self.context.unknown1 = 0
