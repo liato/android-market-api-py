@@ -32,12 +32,11 @@ class MarketSession(object):
     authSubToken = None
     context = None
 
-
     def __init__(self):
         self.context = market_proto.RequestContext()
-        self.context.unknown1 = 0
+        self.context.isSecure = 0
         self.context.version = 1002012
-        self.context.androidId = "0123456789123456"
+        self.context.androidId = "0123456789123456" # change me :(
         self.context.userLanguage = "en"
         self.context.userCountry = "US"
         self.context.deviceAndSdkVersion = "crespo:10"
@@ -94,7 +93,6 @@ class MarketSession(object):
         self.context.authSubToken = authSubToken
         self.authSubToken = authSubToken
 
-
     def login(self, email, password, accountType = ACCOUNT_TYPE_HOSTED_OR_GOOGLE):
         params = {"Email": email, "Passwd": password, "service": self.SERVICE,
                   "accountType": accountType}
@@ -132,7 +130,13 @@ class MarketSession(object):
                        "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7"}
             data = request.SerializeToString()
             data = "version=%d&request=%s" % (self.PROTOCOL_VERSION, base64.b64encode(data))
-            request = urllib2.Request("http://android.clients.google.com/market/api/ApiRequest",
+
+            if self.context.isSecure == 1 or self.context.isSecure == True:
+                http = "https://"
+            else:
+                http = "http://"
+
+            request = urllib2.Request(http + "android.clients.google.com/market/api/ApiRequest",
                                       data, headers)
             data = urllib2.urlopen(request).read()
             data = StringIO.StringIO(data)
@@ -210,7 +214,7 @@ class MarketSession(object):
             if rg.HasField("subCategoriesResponse"):
                 for cat in rg.subCategoriesResponse.category:
                     retlist.append(self._toDict(cat))
-        return retlist    
+        return retlist
 
 if __name__ == "__main__":
     print "No command line interface available, yet."
