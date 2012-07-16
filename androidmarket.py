@@ -36,7 +36,7 @@ class MarketSession(object):
         self.context = market_proto.RequestContext()
         self.context.isSecure = 0
         self.context.version = 1002012
-        self.context.androidId = "0123456789123456"
+        self.context.androidId = "0123456789123456" # change me :(
         self.context.userLanguage = "en"
         self.context.userCountry = "US"
         self.context.deviceAndSdkVersion = "crespo:10"
@@ -130,7 +130,13 @@ class MarketSession(object):
                        "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7"}
             data = request.SerializeToString()
             data = "version=%d&request=%s" % (self.PROTOCOL_VERSION, base64.b64encode(data))
-            request = urllib2.Request("http://android.clients.google.com/market/api/ApiRequest",
+
+            if self.context.isSecure == 1 or self.context.isSecure == True:
+                http = "https://"
+            else:
+                http = "http://"
+
+            request = urllib2.Request(http + "android.clients.google.com/market/api/ApiRequest",
                                       data, headers)
             data = urllib2.urlopen(request).read()
             data = StringIO.StringIO(data)
