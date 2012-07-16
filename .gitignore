@@ -1,2 +1,14 @@
+# ignore precompiled python files
 *.pyc
+
+# ignore swap files and leftover changes
+*.swp
+*.swo
+*.~
+
+# these files are downloaded by examples.py
+screenshot.png
+icon.png
+
+# dunno what this is
 examples.private.py
