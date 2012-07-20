@@ -148,12 +148,25 @@ class MarketSession(object):
         except Exception, e:
             raise RequestError(e)
 
-    def searchApp(self, query, startIndex = 0, entriesCount = 10, extendedInfo = True):
+    def searchApp(self, query = None, startIndex = 0, entriesCount = 10, extendedInfo = True, categoryId = None, orderType = None, viewType = None):
         appsreq = market_proto.AppsRequest()
-        appsreq.query = query
+
+        if (query != None):
+            appsreq.query = query
+
         appsreq.startIndex = startIndex
         appsreq.entriesCount = entriesCount
         appsreq.withExtendedInfo = extendedInfo
+
+        if (categoryId != None):
+            appsreq.categoryId = categoryId;
+
+        if (orderType != None):
+            appsreq.orderType = orderType;
+
+        if (viewType != None):
+            appsreq.viewType = viewType;
+
         request = market_proto.Request()
         request.requestgroup.add(appsRequest = appsreq)
         response = self.execute(request)
