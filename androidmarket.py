@@ -148,7 +148,19 @@ class MarketSession(object):
         except Exception, e:
             raise RequestError(e)
 
-    def searchApp(self, query = None, startIndex = 0, entriesCount = 10, extendedInfo = True, categoryId = None, orderType = None, viewType = None):
+    def searchApp(self, query = None, startIndex = 0, entriesCount = 10, *args):
+        res = []
+
+        while (entriesCount > 0):
+            res.extend(self._searchApp(query, startIndex, \
+                min(10, entriesCount), *args))
+
+            entriesCount -= 10
+            startIndex += 10
+
+        return res
+
+    def _searchApp(self, query = None, startIndex = 0, entriesCount = 10, extendedInfo = True, categoryId = None, orderType = None, viewType = None):
         appsreq = market_proto.AppsRequest()
 
         if (query != None):
