@@ -32,11 +32,11 @@ class MarketSession(object):
     authSubToken = None
     context = None
 
-    def __init__(self):
+    def __init__(self, androidId = "0123456789123456"):
         self.context = market_proto.RequestContext()
         self.context.isSecure = 0
         self.context.version = 1002012
-        self.context.androidId = "0123456789123456" # change me :(
+        self.context.androidId = androidId
         self.context.userLanguage = "en"
         self.context.userCountry = "US"
         self.context.deviceAndSdkVersion = "crespo:10"
@@ -148,12 +148,37 @@ class MarketSession(object):
         except Exception, e:
             raise RequestError(e)
 
-    def searchApp(self, query, startIndex = 0, entriesCount = 10, extendedInfo = True):
+    def searchApp(self, query = None, startIndex = 0, entriesCount = 10, *args):
+        res = []
+
+        while (entriesCount > 0):
+            res.extend(self._searchApp(query, startIndex, \
+                min(10, entriesCount), *args))
+
+            entriesCount -= 10
+            startIndex += 10
+
+        return res
+
+    def _searchApp(self, query = None, startIndex = 0, entriesCount = 10, extendedInfo = True, categoryId = None, orderType = None, viewType = None):
         appsreq = market_proto.AppsRequest()
-        appsreq.query = query
+
+        if (query != None):
+            appsreq.query = query
+
         appsreq.startIndex = startIndex
         appsreq.entriesCount = entriesCount
         appsreq.withExtendedInfo = extendedInfo
+
+        if (categoryId != None):
+            appsreq.categoryId = categoryId;
+
+        if (orderType != None):
+            appsreq.orderType = orderType;
+
+        if (viewType != None):
+            appsreq.viewType = viewType;
+
         request = market_proto.Request()
         request.requestgroup.add(appsRequest = appsreq)
         response = self.execute(request)
@@ -215,6 +240,34 @@ class MarketSession(object):
                 for cat in rg.subCategoriesResponse.category:
                     retlist.append(self._toDict(cat))
         return retlist
+
+    def getSingleResponse(self, req, attr):
+        resp = self.execute(req);
+        for rg in resp.responsegroup:
+            if rg.HasField(attr):
+                return rg.__getattribute__(attr);
+
+        raise Exception("Couldn't find " + str(attr) + " in " + str(resp));
+
+    def downloadApp(self, appid, fname):
+        # Get asset url and cookie
+        asset_req = market_proto.GetAssetRequest();
+        asset_req.assetId = appid;
+        req = market_proto.Request();
+        req.requestgroup.add(getAssetRequest = asset_req);
+        asset_resp = self.getSingleResponse(req, 'getAssetResponse');
+        # Build the request
+        blobUrl = asset_resp.installasset[0].blobUrl;
+        authCookieName = asset_resp.installasset[0].downloadAuthCookieName
+        authCookieValue = asset_resp.installasset[0].downloadAuthCookieValue
+        headers = {"Cookie": authCookieName + "=" + authCookieValue,\
+                    "User-Agent": "Android-Market/2 (sapphire PLAT-RC33); gzip"}
+        request = urllib2.Request(blobUrl, None, headers);
+        # Download the file
+        data = urllib2.urlopen(request).read()
+        f = open(fname, 'w');
+        f.write(data);
+        f.close();
 
 if __name__ == "__main__":
     print "No command line interface available, yet."
