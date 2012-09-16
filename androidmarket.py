@@ -129,7 +129,7 @@ class MarketSession(object):
                        "Content-Type": "application/x-www-form-urlencoded",
                        "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7"}
             data = request.SerializeToString()
-            data = "version=%d&request=%s" % (self.PROTOCOL_VERSION, base64.b64encode(data))
+            data = "version=%d&request=%s" % (self.PROTOCOL_VERSION, base64.urlsafe_b64encode(data))
 
             if self.context.isSecure == 1 or self.context.isSecure == True:
                 http = "https://"
